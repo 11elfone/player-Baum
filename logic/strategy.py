@@ -10,26 +10,14 @@ import random as rand
 rankv = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
 
 
-def restructure(common: list[Card], hand: list[Card]) -> tuple[dict[str, int], dict[str, int]]:
+def restructure(cards: list[Card]) -> tuple[dict[str, int], dict[str, int]]:
     ranks = {}
     suits = {}
 
-    for c in hand:
-        if type(c) != Card:
-            continue
-        if c.rank in ranks.keys():
-            ranks[c.rank.value] += 1
-        else:
-            ranks[c.rank.value] = 1
+    for c in cards:
+        # if type(c) != Card:
+        #     continue
 
-        if c.suit in suits.keys():
-            suits[c.suit.value] += 1
-        else:
-            suits[c.suit.value] = 1
-
-    for c in common:
-        if type != Card:
-            continue
         if c.rank in ranks.keys():
             ranks[c.rank.value] += 1
         else:
@@ -87,7 +75,7 @@ def decide(table: Table) -> Bet:
 
     try:
         # questionable code goes here
-        ranks, suits = restructure(common, hand)
+        ranks, suits = restructure(cards)
         print(ranks)
         top_multi_rank, top_multi = find_top_multi(ranks)
         print(f'{top_multi_rank} x {top_multi}')
