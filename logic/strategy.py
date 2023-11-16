@@ -2,16 +2,17 @@ from models.bet import Bet
 from models.table import Table
 from models.card import Card
 from models.suit import Suit
+from models.rank import Rank
 
 
-def restructure(common: list[Card], hand: list[Card]) -> tuple[dict[str, int], dict[Suit, int]]:
+def restructure(common: list[Card], hand: list[Card]) -> tuple[dict[Rank, int], dict[Suit, int]]:
     ranks = {}
     suits = {}
     for c in hand:
-        if str(c.rank) in ranks.keys():
-            ranks[str(c.rank)] += 1
+        if c.rank in ranks.keys():
+            ranks[c.rank] += 1
         else:
-            ranks[str(c.rank)] = 1
+            ranks[c.rank] = 1
 
         if c.suit in suits.keys():
             suits[c.suit] += 1
@@ -19,10 +20,10 @@ def restructure(common: list[Card], hand: list[Card]) -> tuple[dict[str, int], d
             suits[c.suit] = 1
 
     for c in common:
-        if str(c.rank) in ranks.keys():
-            ranks[str(c.rank)] += 1
+        if c.rank in ranks.keys():
+            ranks[c.rank] += 1
         else:
-            ranks[str(c.rank)] = 1
+            ranks[c.rank] = 1
 
         if c.suit in suits.keys():
             suits[c.suit] += 1
@@ -30,6 +31,10 @@ def restructure(common: list[Card], hand: list[Card]) -> tuple[dict[str, int], d
             suits[c.suit] = 1
 
     return ranks, suits
+
+
+def find_top_multi(ranks: dict[str, int]) -> tuple[Rank, int]:
+    pass
 
 
 def decide(table: Table) -> Bet:
@@ -41,6 +46,9 @@ def decide(table: Table) -> Bet:
     ranks, suits = restructure(common, hand)
 
     # go all-in
-    bet = Bet(table.players[table.activePlayer].stack)
+    # bet = Bet(table.players[table.activePlayer].stack)
+
+    # bet min
+    bet = Bet(table.minimumRaise)
 
     return bet
