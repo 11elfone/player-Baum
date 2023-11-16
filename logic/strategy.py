@@ -82,7 +82,7 @@ def decide(table: Table) -> Bet:
     top_multi_rank, top_multi = find_top_multi(ranks)
     print(f'{top_multi_rank} x {top_multi}')
     if top_multi < 2 or rankv[top_multi_rank] <= 10:
-        print('folding')
+        print('folding for low cards')
         return Bet(0)
 
     if top_multi == 4:
