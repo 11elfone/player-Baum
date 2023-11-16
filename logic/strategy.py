@@ -95,8 +95,6 @@ def decide(table: Table) -> Bet:
     except Exception as e:
         print(f'An exception occurred:\n{e}\ntraceback:\n{traceback.print_exc()}')
 
-    print('hi2')
-
     # go all-in
     # bet = Bet(table.players[table.activePlayer].stack)
 
