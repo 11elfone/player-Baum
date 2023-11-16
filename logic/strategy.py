@@ -15,8 +15,8 @@ def restructure(cards: list[Card]) -> tuple[dict[str, int], dict[str, int]]:
     suits = {}
 
     for c in cards:
-        # if type(c) != Card:
-        #     continue
+        if type(c) != Card:
+            continue
 
         if c.rank in ranks.keys():
             ranks[c.rank.value] += 1
