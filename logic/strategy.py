@@ -20,7 +20,7 @@ rankv = {Rank._2: 2,
          Rank.A: 14}
 
 
-def restructure(common: list[Card], hand: list[Card]) -> tuple[dict[Rank.name, int], dict[Suit.name, int]]:
+def restructure(common: list[Card], hand: list[Card]) -> tuple[dict[Rank, int], dict[Suit, int]]:
     ranks = {}
     suits = {}
     for c in hand:
@@ -48,10 +48,10 @@ def restructure(common: list[Card], hand: list[Card]) -> tuple[dict[Rank.name, i
     return ranks, suits
 
 
-def find_top_multi(ranks: dict[Rank.name, int]) -> tuple[Rank.name, int]:
-    rank: Rank.name = Rank._2
+def find_top_multi(ranks: dict[Rank, int]) -> tuple[Rank, int]:
+    rank: Rank = Rank._2
     n = 0
-    for r in sorted(ranks.keys()):
+    for r in ranks.keys():
         if ranks[r] > n:
             n = ranks[r]
             rank = r
