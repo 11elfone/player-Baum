@@ -65,7 +65,9 @@ def decide(table: Table) -> Bet:
     hand = table.players[table.activePlayer].cards
     common = table.communityCards
 
+    print(f'size hand: {len(hand)}')
     print(f'what is this hand: {hand}')
+    print(f'size common: {len(common)}')
     print(f'what is this common: {common}')
 
     stack = table.players[table.activePlayer].stack
