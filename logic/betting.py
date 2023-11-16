@@ -1,6 +1,5 @@
 def best_amount_to_bet(prob: float, amount_bet: int, cash: int, pot: int):
     """
-
     :param prob: p of winning this round
     :param amount_bet: the amount we bet in this and previous rounds
     :param cash: our money
