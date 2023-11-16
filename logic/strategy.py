@@ -72,8 +72,6 @@ def decide(table: Table) -> Bet:
     cards = hand + common
     print(f'total cards in game: {len(cards)}')
 
-    print('hi')
-
     try:
         # questionable code goes here
         ranks, suits = restructure(cards)
