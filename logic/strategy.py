@@ -93,7 +93,7 @@ def decide(table: Table) -> Bet:
         print(f'An exception occurred:\n{e}\ntraceback:\n{traceback.print_exc()}')
 
     # go all-in
-    bet = Bet(min(table.minimumBet, rand.random()*table.players[table.activePlayer].stack))
+    bet = Bet(int(min(table.minimumBet, rand.random()*table.players[table.activePlayer].stack)))
     print(f"Bet: {bet}, minbet: {minbet}")
     return bet
 
