@@ -80,7 +80,7 @@ def decide(table: Table) -> Bet:
     ranks, suits = restructure(cards)
     print(ranks)
     top_multi_rank, top_multi = find_top_multi(ranks)
-    print(f'{top_multi_rank} x {top_multi}')
+    print(f'TOP MUlTY: {top_multi_rank} x {top_multi}')
     print(f'low cards: {rankv[top_multi_rank] <= 10}')
     if top_multi < 2 and rankv[top_multi_rank] <= 9:
         print('folding for low cards')
@@ -98,6 +98,8 @@ def decide(table: Table) -> Bet:
 
     # go all-in
     bet_amount = int(max(table.minimumBet + 1, int(stack)/2, 1))
+    if bet_amount > stack:
+        bet_amount = stack
     bet = Bet(bet_amount)
     print(f"Bet: {bet_amount}, minbet: {table.minimumBet}")
     return bet
