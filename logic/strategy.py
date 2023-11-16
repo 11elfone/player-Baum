@@ -93,13 +93,3 @@ def decide(table: Table) -> Bet:
     bet = Bet(bet_amount)
     print(f"Bet: {bet_amount}, minbet: {table.minimumBet}")
     return bet
-
-    # bet min, never all-in
-    if stack-minraise > 0:
-        bet = Bet(minraise)
-    elif stack-minbet > 0:
-        bet = Bet(minbet)
-    else:
-        bet = Bet(0)
-
-    return bet
