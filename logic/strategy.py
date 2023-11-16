@@ -6,22 +6,11 @@ from models.rank import Rank
 import traceback
 
 
-rankv = {Rank._2: 2,
-         Rank._3: 3,
-         Rank._4: 4,
-         Rank._5: 5,
-         Rank._6: 6,
-         Rank._7: 7,
-         Rank._8: 8,
-         Rank._9: 9,
-         Rank._10: 10,
-         Rank.J: 11,
-         Rank.Q: 12,
-         Rank.K: 13,
-         Rank.A: 14}
+# rankv = {Rank._2: 2, Rank._3: 3, Rank._4: 4, Rank._5: 5, Rank._6: 6, Rank._7: 7, Rank._8: 8, Rank._9: 9, Rank._10: 10, Rank.J: 11, Rank.Q: 12, Rank.K: 13, Rank.A: 14}
+rankv = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
 
 
-def restructure(common: list[Card], hand: list[Card]) -> tuple[dict[Rank, int], dict[Suit, int]]:
+def restructure(common: list[Card], hand: list[Card]) -> tuple[dict[str, int], dict[str, int]]:
     ranks = {}
     suits = {}
 
@@ -29,33 +18,33 @@ def restructure(common: list[Card], hand: list[Card]) -> tuple[dict[Rank, int], 
         if type(c) != Card:
             continue
         if c.rank in ranks.keys():
-            ranks[c.rank] += 1
+            ranks[str(c.rank)] += 1
         else:
-            ranks[c.rank] = 1
+            ranks[str(c.rank)] = 1
 
         if c.suit in suits.keys():
-            suits[c.suit] += 1
+            suits[str(c.suit)] += 1
         else:
-            suits[c.suit] = 1
+            suits[str(c.suit)] = 1
 
     for c in common:
         if type != Card:
             continue
         if c.rank in ranks.keys():
-            ranks[c.rank] += 1
+            ranks[str(c.rank)] += 1
         else:
-            ranks[c.rank] = 1
+            ranks[str(c.rank)] = 1
 
         if c.suit in suits.keys():
-            suits[c.suit] += 1
+            suits[str(c.suit)] += 1
         else:
-            suits[c.suit] = 1
+            suits[str(c.suit)] = 1
 
     return ranks, suits
 
 
-def find_top_multi(ranks: dict[Rank, int]) -> tuple[Rank, int]:
-    rank: Rank = Rank._2
+def find_top_multi(ranks: dict[str, int]) -> tuple[str, int]:
+    rank: str = ''
     n = 0
     for r in ranks.keys():
         if ranks[r] > n:
@@ -67,7 +56,7 @@ def find_top_multi(ranks: dict[Rank, int]) -> tuple[Rank, int]:
     return rank, n
 
 
-def find_highest_flush(cards: list[Card], suits: dict[Suit, int]) -> bool:
+def find_highest_flush(cards: list[Card], suits: dict[str, int]) -> bool:
     if max(suits.values()) >= 5:
         return True
     else:
