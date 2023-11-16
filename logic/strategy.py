@@ -34,7 +34,7 @@ def find_top_multi(ranks: dict[str, int]) -> tuple[str, int]:
         if ranks[r] > n:
             n = ranks[r]
             rank = r
-        elif ranks[r] == n and value[r] > rankvalue:
+        elif ranks[r] == n and rankvalue < value[r]:
             n = ranks[r]
             rank = r
             rankvalue = value[r]
