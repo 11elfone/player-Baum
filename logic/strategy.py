@@ -10,23 +10,20 @@ import random as rand
 rankv = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
 
 
-def restructure(cards: list[Card]) -> tuple[dict[str, int], dict[str, int]]:
+def restructure(cards: list[dict]) -> tuple[dict[str, int], dict[str, int]]:
     ranks = {}
     suits = {}
 
     for c in cards:
-        if type(c) != Card:
-            continue
-
-        if c.rank in ranks.keys():
-            ranks[c.rank.value] += 1
+        if c['rank'] in ranks.keys():
+            ranks[c['rank']] += 1
         else:
-            ranks[c.rank.value] = 1
+            ranks[c['rank']] = 1
 
-        if c.suit in suits.keys():
-            suits[c.suit.value] += 1
+        if c['suit'] in suits.keys():
+            suits[c['suit']] += 1
         else:
-            suits[c.suit.value] = 1
+            suits[c['suit']] = 1
 
     return ranks, suits
 
