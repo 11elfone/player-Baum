@@ -89,7 +89,7 @@ def decide(table: Table) -> Bet:
 
     # fold on first round
     print(f"Round: {table.round}")
-    if table.round == 0:
+    if table.round == 1:
         return Bet(0)
 
     # go all-in
