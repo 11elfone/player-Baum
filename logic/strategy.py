@@ -1,8 +1,5 @@
 from models.bet import Bet
 from models.table import Table
-from models.card import Card
-from models.suit import Suit
-from models.rank import Rank
 import traceback
 import random as rand
 
@@ -10,23 +7,20 @@ import random as rand
 rankv = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
 
 
-def restructure(cards: list[Card]) -> tuple[dict[str, int], dict[str, int]]:
+def restructure(cards: list[dict]) -> tuple[dict[str, int], dict[str, int]]:
     ranks = {}
     suits = {}
 
     for c in cards:
-        if type(c) != Card:
-            continue
-
-        if c.rank in ranks.keys():
-            ranks[c.rank.value] += 1
+        if c['rank'] in ranks.keys():
+            ranks[c['rank']] += 1
         else:
-            ranks[c.rank.value] = 1
+            ranks[c['rank']] = 1
 
-        if c.suit in suits.keys():
-            suits[c.suit.value] += 1
+        if c['suit'] in suits.keys():
+            suits[c['suit']] += 1
         else:
-            suits[c.suit.value] = 1
+            suits[c['suit']] = 1
 
     return ranks, suits
 
@@ -46,18 +40,19 @@ def find_top_multi(ranks: dict[str, int]) -> tuple[str, int]:
     return rank, n
 
 
-def find_highest_flush(cards: list[Card], suits: dict[str, int]) -> bool:
+def find_highest_flush(cards: list[dict], suits: dict[str, int]) -> bool:
     if max(suits.values()) >= 5:
         return True
     else:
         return False
 
 
-def find_straight(ranks: dict[Rank, int]) -> bool:
-    pass
+# def find_straight(ranks: dict[Rank, int]) -> bool:
+#     pass
 
 
 def decide(table: Table) -> Bet:
+    print((20*'-')+'\ndecision\n'+(20*'-'))
     # TODO: Add Poker Logic Here... :)
 
     hand = []
@@ -80,14 +75,13 @@ def decide(table: Table) -> Bet:
     cards = hand + common
     print(f'total cards in game: {len(cards)}')
 
-    try:
-        # questionable code goes here
-        ranks, suits = restructure(cards)
-        print(ranks)
-        top_multi_rank, top_multi = find_top_multi(ranks)
-        print(f'{top_multi_rank} x {top_multi}')
-    except Exception as e:
-        print(f'An exception occurred:\n{e}\ntraceback:\n{traceback.print_exc()}')
+    # questionable code goes here
+    ranks, suits = restructure(cards)
+    print(ranks)
+    top_multi_rank, top_multi = find_top_multi(ranks)
+    print(f'{top_multi_rank} x {top_multi}')
+    if top_multi < 2 or rankv[top_multi_rank] <= 10:
+        return Bet(0)
 
     # fold on first round
     print(f"Round: {table.round}")

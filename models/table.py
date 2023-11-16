@@ -4,7 +4,7 @@ from typing import List
 
 
 class Table:
-    communityCards: List[Card] = []
+    communityCards: List[dict] = []
     players: List[Player] = []
     round: int
     smallBlind: int
