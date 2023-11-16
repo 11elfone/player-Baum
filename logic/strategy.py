@@ -51,6 +51,9 @@ def find_highest_flush(cards: list[dict], suits: dict[str, int]) -> bool:
 
 
 def decide(table: Table) -> Bet:
+    return Bet(table.players[table.activePlayer].stack)
+
+
     print((20*'-')+'\ndecision\n'+(20*'-') + strftime('[%H:%M:%S]'))
     print(f"Round: {table.round}")
 
