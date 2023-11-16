@@ -70,6 +70,7 @@ def decide(table: Table) -> Bet:
     nround = table.round
 
     cards = hand + common
+    print(f'total cards in game: {len(cards)}')
 
     print('hi')
 
