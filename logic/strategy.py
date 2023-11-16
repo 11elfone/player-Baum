@@ -4,7 +4,7 @@ from models.card import Card
 from models.suit import Suit
 from models.rank import Rank
 import traceback
-
+import random as rand
 
 # rankv = {Rank._2: 2, Rank._3: 3, Rank._4: 4, Rank._5: 5, Rank._6: 6, Rank._7: 7, Rank._8: 8, Rank._9: 9, Rank._10: 10, Rank.J: 11, Rank.Q: 12, Rank.K: 13, Rank.A: 14}
 rankv = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
@@ -93,7 +93,7 @@ def decide(table: Table) -> Bet:
         print(f'An exception occurred:\n{e}\ntraceback:\n{traceback.print_exc()}')
 
     # go all-in
-    bet = Bet(table.players[table.activePlayer].stack)
+    bet = Bet(min(table.minimumBet, rand.random()*table.players[table.activePlayer].stack))
     return bet
 
     # bet min, never all-in
