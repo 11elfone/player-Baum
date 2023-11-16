@@ -85,7 +85,7 @@ def decide(table: Table) -> Bet:
         return Bet(0)
 
     if top_multi == 4:
-
+        return Bet(stack)
 
     # fold on first round
     print(f"Round: {table.round}")
