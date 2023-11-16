@@ -18,27 +18,27 @@ def restructure(common: list[Card], hand: list[Card]) -> tuple[dict[str, int], d
         if type(c) != Card:
             continue
         if c.rank in ranks.keys():
-            ranks[str(c.rank)] += 1
+            ranks[c.rank.value] += 1
         else:
-            ranks[str(c.rank)] = 1
+            ranks[c.rank.value] = 1
 
         if c.suit in suits.keys():
-            suits[str(c.suit)] += 1
+            suits[c.suit.value] += 1
         else:
-            suits[str(c.suit)] = 1
+            suits[c.suit.value] = 1
 
     for c in common:
         if type != Card:
             continue
         if c.rank in ranks.keys():
-            ranks[str(c.rank)] += 1
+            ranks[c.rank.value] += 1
         else:
-            ranks[str(c.rank)] = 1
+            ranks[c.rank.value] = 1
 
         if c.suit in suits.keys():
-            suits[str(c.suit)] += 1
+            suits[c.suit.value] += 1
         else:
-            suits[str(c.suit)] = 1
+            suits[c.suit.value] = 1
 
     return ranks, suits
 
