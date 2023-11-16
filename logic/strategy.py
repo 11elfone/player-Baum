@@ -5,6 +5,21 @@ from models.suit import Suit
 from models.rank import Rank
 
 
+rankv = {Rank._2: 2,
+         Rank._3: 3,
+         Rank._4: 4,
+         Rank._5: 5,
+         Rank._6: 6,
+         Rank._7: 7,
+         Rank._8: 8,
+         Rank._9: 9,
+         Rank._10: 10,
+         Rank.J: 11,
+         Rank.Q: 12,
+         Rank.K: 13,
+         Rank.A: 14}
+
+
 def restructure(common: list[Card], hand: list[Card]) -> tuple[dict[Rank.name, int], dict[Suit.name, int]]:
     ranks = {}
     suits = {}
@@ -33,11 +48,14 @@ def restructure(common: list[Card], hand: list[Card]) -> tuple[dict[Rank.name, i
     return ranks, suits
 
 
-def find_top_multi(ranks: dict[str, int]) -> tuple[Rank.name, int]:
+def find_top_multi(ranks: dict[Rank.name, int]) -> tuple[Rank.name, int]:
     rank: Rank.name = Rank._2
     n = 0
     for r in sorted(ranks.keys()):
-        if ranks[r] >= n:
+        if ranks[r] > n:
+            n = ranks[r]
+            rank = r
+        elif ranks[r] >= n and rankv[r] > rankv[rank]:
             n = ranks[r]
             rank = r
     return rank, n
@@ -49,7 +67,8 @@ def decide(table: Table) -> Bet:
     hand = table.players[table.activePlayer].cards
     common = table.communityCards
 
-    # ranks, suits = restructure(common, hand)
+    ranks, suits = restructure(common, hand)
+    top_multi, top_multi_rank = find_top_multi(ranks)
 
     # go all-in
     # bet = Bet(table.players[table.activePlayer].stack)
