@@ -83,6 +83,10 @@ def decide(table: Table) -> Bet:
     except Exception as e:
         print(f'An exception occurred:\n{e}\ntraceback:\n{traceback.print_exc()}')
 
+    # fold on first round
+    if table.round == 0:
+        return Bet(0)
+
     # go all-in
     bet_amount = int(max(table.minimumBet, rand.random()*table.players[table.activePlayer].stack))
     bet = Bet(bet_amount)
