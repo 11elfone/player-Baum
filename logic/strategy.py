@@ -95,6 +95,8 @@ def decide(table: Table) -> Bet:
 
     # go all-in
     bet_amount = int(max(table.minimumBet + 1, int(stack)/2, 1))
+    if bet_amount > stack:
+        bet_amount = stack
     bet = Bet(bet_amount)
     print(f"Bet: {bet_amount}, minbet: {table.minimumBet}")
     return bet
