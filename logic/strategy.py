@@ -1,8 +1,5 @@
 from models.bet import Bet
 from models.table import Table
-from models.card import Card
-from models.suit import Suit
-from models.rank import Rank
 import traceback
 import random as rand
 
@@ -43,15 +40,15 @@ def find_top_multi(ranks: dict[str, int]) -> tuple[str, int]:
     return rank, n
 
 
-def find_highest_flush(cards: list[Card], suits: dict[str, int]) -> bool:
+def find_highest_flush(cards: list[dict], suits: dict[str, int]) -> bool:
     if max(suits.values()) >= 5:
         return True
     else:
         return False
 
 
-def find_straight(ranks: dict[Rank, int]) -> bool:
-    pass
+# def find_straight(ranks: dict[Rank, int]) -> bool:
+#     pass
 
 
 def decide(table: Table) -> Bet:
