@@ -95,7 +95,7 @@ def decide(table: Table) -> Bet:
         return Bet(0)
 
     # go all-in
-    bet_amount = int(max(table.minimumBet, rand.random()*table.players[table.activePlayer].stack*0.7))
+    bet_amount = int(max(table.minimumBet, (rand.random() * table.players[table.activePlayer].stack)*0.5, 1))
     bet = Bet(bet_amount)
     print(f"Bet: {bet_amount}, minbet: {table.minimumBet}")
     return bet
