@@ -69,6 +69,7 @@ def decide(table: Table) -> Bet:
     common = table.communityCards
 
     try:
+        # questionable code goes here
         ranks, suits = restructure(common, hand)
         top_multi, top_multi_rank = find_top_multi(ranks)
     except Exception as e:
