@@ -62,20 +62,34 @@ def find_top_multi(ranks: dict[Rank, int]) -> tuple[Rank, int]:
     return rank, n
 
 
+def find_highest_flush(cards: list[Card], suits: dict[Suit, int]) -> bool:
+    if max(suits.values()) >= 5:
+        return True
+    else:
+        return False
+
+
+def find_straight(ranks: dict[Rank, int]) -> bool:
+    pass
+
+
 def decide(table: Table) -> Bet:
     # TODO: Add Poker Logic Here... :)
 
     hand = table.players[table.activePlayer].cards
     common = table.communityCards
 
+    cards = hand + common
+
+    print('hi')
+
     try:
         # questionable code goes here
         ranks, suits = restructure(common, hand)
         top_multi, top_multi_rank = find_top_multi(ranks)
+        print(f'{top_multi_rank} x {top_multi}')
     except Exception as e:
         print(f'An exception occurred:\n{e}\ntraceback:\n{traceback.print_exc()}')
-
-    print('hi')
 
     # go all-in
     # bet = Bet(table.players[table.activePlayer].stack)
