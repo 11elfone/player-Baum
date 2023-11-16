@@ -54,7 +54,7 @@ def find_highest_flush(cards: list[dict], suits: dict[str, int]) -> bool:
 
 def decide(table: Table) -> Bet:
     print((20*'-')+'\ndecision\n'+(20*'-') + strftime('[%H:%M:%S]'))
-    # TODO: Add Poker Logic Here... :)
+    print(f"Round: {table.round}")
 
     hand = []
     common = []
@@ -91,7 +91,6 @@ def decide(table: Table) -> Bet:
         return Bet(stack)
 
     # fold on first round
-    print(f"Round: {table.round}")
     if table.round == 1:
         print(f"--\nfold in first round\n--")
         return Bet(0)
