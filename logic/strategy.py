@@ -3,6 +3,7 @@ from models.table import Table
 from models.card import Card
 from models.suit import Suit
 from models.rank import Rank
+import traceback
 
 
 rankv = {Rank._2: 2,
@@ -67,8 +68,11 @@ def decide(table: Table) -> Bet:
     hand = table.players[table.activePlayer].cards
     common = table.communityCards
 
-    ranks, suits = restructure(common, hand)
-    top_multi, top_multi_rank = find_top_multi(ranks)
+    try:
+        ranks, suits = restructure(common, hand)
+        top_multi, top_multi_rank = find_top_multi(ranks)
+    except Exception as e:
+        print(f'An exception occurred:\n{e}\ntraceback:\n{traceback.print_exc()}')
 
     print('hi')
 
