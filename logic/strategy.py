@@ -81,7 +81,7 @@ def decide(table: Table) -> Bet:
         print(ranks)
         top_multi_rank, top_multi = find_top_multi(ranks)
         print(f'{top_multi_rank} x {top_multi}')
-        if top_multi < 2 or rankv[top_multi_rank] > 10:
+        if top_multi < 2 or rankv[top_multi_rank] <= 10:
             return Bet(0)
     except Exception as e:
         print(f'An exception occurred:\n{e}\ntraceback:\n{traceback.print_exc()}')
