@@ -60,6 +60,8 @@ def find_straight(ranks: dict[Rank, int]) -> bool:
 def decide(table: Table) -> Bet:
     # TODO: Add Poker Logic Here... :)
 
+    hand = []
+    common = []
     hand = table.players[table.activePlayer].cards
     common = table.communityCards
 
@@ -72,6 +74,7 @@ def decide(table: Table) -> Bet:
 
     nround = table.round
 
+    cards = []
     cards = hand + common
     print(f'total cards in game: {len(cards)}')
 
