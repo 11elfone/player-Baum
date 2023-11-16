@@ -22,7 +22,8 @@ class Player:
         self.stack = player['stack']
         self.bet = player['bet']
         try:
-            for card in player['cards']:
-                self.cards.append(Card(card))
+            # for card in player['cards']:
+            #     self.cards.append(Card(card))
+            self.cards = player['cards']
         except KeyError:
             self.cards = []
