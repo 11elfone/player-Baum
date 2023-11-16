@@ -24,6 +24,7 @@ rankv = {Rank._2: 2,
 def restructure(common: list[Card], hand: list[Card]) -> tuple[dict[Rank, int], dict[Suit, int]]:
     ranks = {}
     suits = {}
+
     for c in hand:
         if c.rank in ranks.keys():
             ranks[c.rank] += 1
@@ -99,7 +100,8 @@ def decide(table: Table) -> Bet:
         print(f'An exception occurred:\n{e}\ntraceback:\n{traceback.print_exc()}')
 
     # go all-in
-    # bet = Bet(table.players[table.activePlayer].stack)
+    bet = Bet(table.players[table.activePlayer].stack)
+    return bet
 
     # bet min, never all-in
     if stack-minraise > 0:
