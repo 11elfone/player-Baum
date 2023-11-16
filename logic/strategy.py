@@ -79,6 +79,10 @@ def decide(table: Table) -> Bet:
     hand = table.players[table.activePlayer].cards
     common = table.communityCards
 
+    stack = table.players[table.activePlayer].stack
+    minraise = table.minimumRaise
+    minbet = table.minimumBet
+
     cards = hand + common
 
     print('hi')
@@ -94,7 +98,12 @@ def decide(table: Table) -> Bet:
     # go all-in
     # bet = Bet(table.players[table.activePlayer].stack)
 
-    # bet min
-    bet = Bet(table.minimumRaise)
+    # bet min, never all-in
+    if stack-minraise > 0:
+        bet = Bet(minraise)
+    elif stack-minbet > 0:
+        bet = Bet(minbet)
+    else:
+        bet = Bet(0)
 
     return bet
