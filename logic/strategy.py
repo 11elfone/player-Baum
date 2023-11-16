@@ -26,6 +26,8 @@ def restructure(common: list[Card], hand: list[Card]) -> tuple[dict[Rank, int], 
     suits = {}
 
     for c in hand:
+        if type(c) != Card:
+            continue
         if c.rank in ranks.keys():
             ranks[c.rank] += 1
         else:
@@ -37,6 +39,8 @@ def restructure(common: list[Card], hand: list[Card]) -> tuple[dict[Rank, int], 
             suits[c.suit] = 1
 
     for c in common:
+        if type != Card:
+            continue
         if c.rank in ranks.keys():
             ranks[c.rank] += 1
         else:
