@@ -88,6 +88,7 @@ def decide(table: Table) -> Bet:
         print(f'An exception occurred:\n{e}\ntraceback:\n{traceback.print_exc()}')
 
     # fold on first round
+    print(f"Round: {table.round}")
     if table.round == 0:
         return Bet(0)
 
