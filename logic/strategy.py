@@ -83,6 +83,8 @@ def decide(table: Table) -> Bet:
     minraise = table.minimumRaise
     minbet = table.minimumBet
 
+    nround = table.round
+
     cards = hand + common
 
     print('hi')
@@ -90,7 +92,8 @@ def decide(table: Table) -> Bet:
     try:
         # questionable code goes here
         ranks, suits = restructure(common, hand)
-        top_multi, top_multi_rank = find_top_multi(ranks)
+        print(ranks)
+        top_multi_rank, top_multi = find_top_multi(ranks)
         print(f'{top_multi_rank} x {top_multi}')
     except Exception as e:
         print(f'An exception occurred:\n{e}\ntraceback:\n{traceback.print_exc()}')
