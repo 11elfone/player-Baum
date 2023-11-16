@@ -58,6 +58,7 @@ def find_straight(ranks: dict[Rank, int]) -> bool:
 
 
 def decide(table: Table) -> Bet:
+    print((20*'-')+'\ndecision\n'+(20*'-'))
     # TODO: Add Poker Logic Here... :)
 
     hand = []
