@@ -15,8 +15,8 @@ def restructure(cards: list[Card]) -> tuple[dict[str, int], dict[str, int]]:
     suits = {}
 
     for c in cards:
-        # if type(c) != Card:
-        #     continue
+        if type(c) != Card:
+            continue
 
         if c.rank in ranks.keys():
             ranks[c.rank.value] += 1
@@ -70,6 +70,7 @@ def decide(table: Table) -> Bet:
     nround = table.round
 
     cards = hand + common
+    print(f'total cards in game: {len(cards)}')
 
     print('hi')
 
