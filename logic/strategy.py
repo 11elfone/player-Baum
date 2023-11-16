@@ -44,7 +44,7 @@ def restructure(common: list[Card], hand: list[Card]) -> tuple[dict[str, int], d
 
 
 def find_top_multi(ranks: dict[str, int]) -> tuple[str, int]:
-    rank: str = ''
+    rank: str = '2'
     n = 0
     for r in ranks.keys():
         if ranks[r] > n:
