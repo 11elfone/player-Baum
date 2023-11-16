@@ -91,11 +91,11 @@ def decide(table: Table) -> Bet:
 
     # fold on first round
     print(f"Round: {table.round}")
-    if table.round == 0:
+    if table.round == 1:
         return Bet(0)
 
     # go all-in
-    bet_amount = int(max(table.minimumBet, rand.random()*table.players[table.activePlayer].stack))
+    bet_amount = int(max(table.minimumBet, rand.random()*table.players[table.activePlayer].stack*0.7))
     bet = Bet(bet_amount)
     print(f"Bet: {bet_amount}, minbet: {table.minimumBet}")
     return bet
