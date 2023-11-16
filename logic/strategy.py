@@ -5,7 +5,7 @@ import random as rand
 from time import strftime
 
 # rankv = {Rank._2: 2, Rank._3: 3, Rank._4: 4, Rank._5: 5, Rank._6: 6, Rank._7: 7, Rank._8: 8, Rank._9: 9, Rank._10: 10, Rank.J: 11, Rank.Q: 12, Rank.K: 13, Rank.A: 14}
-rankv = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
+value = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
 
 
 def restructure(cards: list[dict]) -> tuple[dict[str, int], dict[str, int]]:
@@ -34,10 +34,10 @@ def find_top_multi(ranks: dict[str, int]) -> tuple[str, int]:
         if ranks[r] > n:
             n = ranks[r]
             rank = r
-        elif ranks[r] == n and rankv[r] > rankvalue:
+        elif ranks[r] == n and rankvalue < value[r]:
             n = ranks[r]
             rank = r
-            rankvalue = rankv[r]
+            rankvalue = value[r]
     return rank, n
 
 
@@ -54,7 +54,7 @@ def find_highest_flush(cards: list[dict], suits: dict[str, int]) -> bool:
 
 def decide(table: Table) -> Bet:
     print((20*'-')+'\ndecision\n'+(20*'-') + strftime('[%H:%M:%S]'))
-    # TODO: Add Poker Logic Here... :)
+    print(f"Round: {table.round}")
 
     hand = []
     common = []
@@ -62,9 +62,9 @@ def decide(table: Table) -> Bet:
     common = table.communityCards
 
     print(f'size hand: {len(hand)}')
-    print(f'what is this hand: {hand}')
+    # print(f'what is this hand: {hand}')
     print(f'size common: {len(common)}')
-    print(f'what is this common: {common}')
+    # print(f'what is this common: {common}')
 
     stack = table.players[table.activePlayer].stack
     minraise = table.minimumRaise
@@ -91,7 +91,6 @@ def decide(table: Table) -> Bet:
         return Bet(stack)
 
     # fold on first round
-    print(f"Round: {table.round}")
     if table.round == 1:
         print(f"--\nfold in first round\n--")
         return Bet(0)
