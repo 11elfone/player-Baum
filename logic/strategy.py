@@ -5,7 +5,7 @@ import random as rand
 from time import strftime
 
 # rankv = {Rank._2: 2, Rank._3: 3, Rank._4: 4, Rank._5: 5, Rank._6: 6, Rank._7: 7, Rank._8: 8, Rank._9: 9, Rank._10: 10, Rank.J: 11, Rank.Q: 12, Rank.K: 13, Rank.A: 14}
-rankv = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
+value = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
 
 
 def restructure(cards: list[dict]) -> tuple[dict[str, int], dict[str, int]]:
@@ -34,10 +34,10 @@ def find_top_multi(ranks: dict[str, int]) -> tuple[str, int]:
         if ranks[r] > n:
             n = ranks[r]
             rank = r
-        elif ranks[r] == n and rankv[r] > rankvalue:
+        elif ranks[r] == n and value[r] > rankvalue:
             n = ranks[r]
             rank = r
-            rankvalue = rankv[r]
+            rankvalue = value[r]
     return rank, n
 
 
@@ -81,8 +81,8 @@ def decide(table: Table) -> Bet:
     print(ranks)
     top_multi_rank, top_multi = find_top_multi(ranks)
     print(f'{top_multi_rank} x {top_multi}')
-    print(f'low cards: {rankv[top_multi_rank] <= 10}')
-    if top_multi < 2 and rankv[top_multi_rank] <= 9:
+    print(f'low cards: {value[top_multi_rank] <= 10}')
+    if top_multi < 2 and value[top_multi_rank] <= 9:
         print('folding for low cards')
         return Bet(0)
 
