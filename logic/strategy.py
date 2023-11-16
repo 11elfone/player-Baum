@@ -84,21 +84,20 @@ def decide(table: Table) -> Bet:
     print(f'low cards: {value[top_multi_rank] <= 10}')
     if top_multi < 2 and value[top_multi_rank] <= 9:
         print('folding for low cards')
-        return Bet(0)
+        # return Bet(0)
 
     if top_multi == 4:
         print('all-in')
-        return Bet(stack)
+        # return Bet(stack)
 
     # fold on first round
     if table.round == 1:
         print(f"--\nfold in first round\n--")
-        return Bet(0)
+        # return Bet(0)
 
     # go all-in
     bet_amount = int(max(table.minimumBet + 1, int(stack)/2, 1))
-    if bet_amount > stack:
-        bet_amount = stack
+    bet_amount = stack
     bet = Bet(bet_amount)
     print(f"Bet: {bet_amount}, minbet: {table.minimumBet}")
     return bet
