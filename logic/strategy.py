@@ -96,7 +96,7 @@ def decide(table: Table) -> Bet:
 
     # go all-in
     bet = Bet(int(min(table.minimumBet, rand.random()*table.players[table.activePlayer].stack)))
-    print(f"Bet: {bet}, minbet: {minbet}")
+    print(f"Bet: {bet.bet}, minbet: {minbet}")
     return bet
 
     # bet min, never all-in
