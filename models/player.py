@@ -14,7 +14,7 @@ class Player:
     status: PlayerStatusEnum
     stack: int
     bet: int
-    cards: List[Card] = []
+    cards: List[dict] = []
 
     def __init__(self, player: dict):
         self.name = player['name']
