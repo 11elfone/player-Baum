@@ -70,6 +70,8 @@ def decide(table: Table) -> Bet:
     ranks, suits = restructure(common, hand)
     top_multi, top_multi_rank = find_top_multi(ranks)
 
+    print('hi')
+
     # go all-in
     # bet = Bet(table.players[table.activePlayer].stack)
 
