@@ -64,7 +64,7 @@ def decide(table: Table) -> Bet:
     print(f'size common: {len(common)}')
     # print(f'what is this common: {common}')
 
-    stack = table.players[table.activePlayer].stack
+    stack: int = table.players[table.activePlayer].stack
     minraise = table.minimumRaise
     minbet = table.minimumBet
 
@@ -89,12 +89,11 @@ def decide(table: Table) -> Bet:
         return Bet(stack)
 
     # fold on first round
-    if table.round == 1:
-        print(f"--\nfold in first round\n--")
-        return Bet(0)
+    # if table.round == 1:
+    #     print(f"--\nfold in first round\n--")
+    #     return Bet(0)
 
-    # go all-in
-    bet_amount = int(max(table.minimumBet + 1, int(stack)/2, 1))
+    bet_amount = int(max(table.minimumBet + 1, stack / 2, 1))
     if bet_amount > stack:
         bet_amount = stack
     bet = Bet(bet_amount)
