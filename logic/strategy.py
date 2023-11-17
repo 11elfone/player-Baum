@@ -2,7 +2,7 @@ from models.bet import Bet
 from models.table import Table
 import traceback
 import random as rand
-from time import strftime
+from time import strftime, time
 
 # rankv = {Rank._2: 2, Rank._3: 3, Rank._4: 4, Rank._5: 5, Rank._6: 6, Rank._7: 7, Rank._8: 8, Rank._9: 9, Rank._10: 10, Rank.J: 11, Rank.Q: 12, Rank.K: 13, Rank.A: 14}
 value = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
@@ -55,6 +55,8 @@ def find_highest_flush(cards: list[dict], suits: dict[str, int]) -> bool:
 def decide(table: Table) -> Bet:
     print((20*'-')+'\ndecision\n'+(20*'-') + strftime('\n[%H:%M:%S]'))
     print(f"Round: {table.round}")
+
+    return Bet(time() % 100)
 
     hand = []
     common = []
