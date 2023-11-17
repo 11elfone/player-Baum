@@ -61,9 +61,9 @@ def decide(table: Table) -> Bet:
     hand = table.players[table.activePlayer].cards
     common = table.communityCards
 
-    print(f'size hand: {len(hand)}')
+    # print(f'size hand: {len(hand)}')
     # print(f'what is this hand: {hand}')
-    print(f'size common: {len(common)}')
+    # print(f'size common: {len(common)}')
     # print(f'what is this common: {common}')
 
     stack: int = table.players[table.activePlayer].stack
@@ -75,6 +75,7 @@ def decide(table: Table) -> Bet:
     cards = []
     cards = hand + common
     print(f'total cards in game: {len(cards)}')
+    print(f'cards: {cards}')
 
     # questionable code goes here
     ranks, suits = restructure(cards)
