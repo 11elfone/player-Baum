@@ -56,7 +56,7 @@ def decide(table: Table) -> Bet:
     print((20*'-')+'\ndecision\n'+(20*'-') + strftime('\n[%H:%M:%S]'))
     print(f"Round: {table.round}")
 
-    return Bet(time() % 100)
+    return Bet(time() % 100 + 2*table.minimumBet)
 
     hand = []
     common = []
